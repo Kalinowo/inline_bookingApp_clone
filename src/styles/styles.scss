@@ -1,0 +1,714 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@mixin desktop {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin custom640 {
+  @media (max-width: 640px) {
+    @content;
+  }
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+.bookingHomeOuter {
+  min-height: 100vh;
+  width: 100%;
+}
+
+.firstColumn {
+  position: relative;
+  top: 0;
+  padding: 0 30px 30px;
+  max-width: 1200px;
+  border-bottom: solid gray 1px;
+  margin: 0 auto;
+  @include custom640 {
+    padding: 0 20px 30px;
+  }
+  .title {
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    padding-left: 30px;
+    padding-right: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .optionContainer {
+    display: flex;
+    width: 100%;
+    padding: 20px 30px;
+    max-width: 1200px;
+    justify-content: space-between;
+    // background:lightblue;
+    margin: 0 auto;
+    @include custom640 {
+      flex-direction: column;
+      gap: 15px;
+      padding: 20px 20px;
+    }
+    .numberOfPeople {
+      flex-basis: 48%;
+      div:nth-child(1) {
+        font-size: 20px;
+      }
+      select {
+        width: 100%;
+        height: 30px;
+        border: solid gray 1px;
+        border-radius: 5px;
+        outline: none;
+        padding-left: 10px;
+      }
+    }
+    .date {
+      flex-basis: 48%;
+      div:nth-child(1) {
+        font-size: 20px;
+      }
+      .dateSelect {
+        position: relative;
+        width: 100%;
+        height: 30px;
+        border: solid gray 1px;
+        border-radius: 5px;
+        line-height: 30px;
+        padding-left: 10px;
+      }
+      .downIcon,
+      .upIcon {
+        position: absolute;
+        top: 6px;
+        right: 5px;
+        font-size: 15px;
+      }
+    }
+  }
+  .calendarOuter {
+    position: relative;
+    top: 0;
+    display: flex;
+    flex-wrap: nowrap;
+    height: auto;
+    padding: 0 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-content: space-between;
+    @include custom640 {
+      padding: 0;
+    }
+    .leftIcon {
+      position: absolute;
+      top: 5px;
+      left: 0;
+      color: gray;
+      margin-left: 30px;
+      font-size: 25px;
+      cursor: pointer;
+      @include custom640 {
+        margin: 0;
+      }
+    }
+    .rightIcon {
+      position: absolute;
+      top: 5px;
+      right: 0px;
+      color: gray;
+      margin-right: 30px;
+      font-size: 25px;
+      cursor: pointer;
+      @include custom640 {
+        margin: 0;
+      }
+    }
+
+    .calendarContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex-basis: 48%;
+      @include custom640 {
+        flex-basis: 100%;
+      }
+      &.second {
+        @include custom640 {
+          display: none;
+        }
+      }
+
+      .yearMonthContainer {
+        width: 80%;
+        font-size: 25px;
+        font-weight: bold;
+        text-align: center;
+      }
+      .weekContainer {
+        display: flex;
+        width: 100%;
+        font-size: 20px;
+        span {
+          flex-basis: calc(100% / 7);
+          text-align: center;
+        }
+      }
+      .dateContainer {
+        flex: 1;
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        height: 0;
+        .placeholder {
+          width: calc(100% / 7);
+          height: 0;
+          padding-bottom: calc(100% / 7);
+        }
+        .date {
+          position: relative;
+          width: calc(100% / 7);
+          height: 0;
+          padding-bottom: calc(100% / 7);
+          transform: scale(0.9);
+          border: solid gray 1px;
+          border-radius: 5px;
+          cursor: pointer;
+          &.active {
+            border: none;
+            background: rgb(255, 133, 14);
+            color: white;
+          }
+          .dateText {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+.secondColumn {
+  position: relative;
+  top: 0;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 30px;
+  max-width: 1200px;
+  border-bottom: solid gray 1px;
+  margin: 20px auto 80px;
+  div:nth-child(1) {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  .periodContainer {
+    position: relative;
+    top: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: baseline;
+    gap: 12px;
+    border-top: solid lightgray 1px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    &::before {
+      content: attr(data-name);
+      position: absolute;
+      top: -11px;
+      left: 0;
+      width: 38px;
+      height: 20px;
+      color: gray;
+      background: white;
+      font-size: 15px;
+    }
+    span {
+      border: solid lightgray 1px;
+      border-radius: 5px;
+      flex-basis: calc(100% / 6 - 10px);
+      padding: 10px 0;
+      text-align: center;
+      font-size: 16px;
+      cursor: pointer;
+      @include custom640 {
+        flex-basis: calc(100% / 3 - 10px);
+      }
+      &.active {
+        border: none;
+        background: rgb(255, 133, 14);
+        color: white;
+      }
+    }
+  }
+  .note {
+    text-align: center;
+    margin-top: 15px;
+    .first,
+    .second {
+      font-size: 15px;
+      line-height: 1px;
+    }
+  }
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  background: white;
+  box-shadow: 0px 10px 20px 1px gray;
+  .confirmContainer {
+    display: flex;
+    justify-content: center;
+    border-bottom: solid lightgray 1px;
+    .confirmList {
+      display: flex;
+      align-items: center;
+      width: 80%;
+      height: 50px;
+      background: white;
+      line-height: 50px;
+      @include custom640 {
+        justify-content: center;
+        white-space: nowrap;
+        width: 100%;
+      }
+      div {
+        @include custom640 {
+          display: none;
+        }
+      }
+      span {
+        background: rgb(236, 236, 236);
+        line-height: 18px;
+        padding: 10px;
+        border-radius: 5px;
+        margin: 0 10px;
+        border: solid lightgray 2px;
+      }
+    }
+  }
+  .btnContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+    .btn {
+      width: 80%;
+      font-size: 18px;
+      color: white;
+      background: rgb(255, 133, 14);
+      text-align: center;
+      border-radius: 8px;
+      padding: 10px;
+    }
+  }
+}
+
+.customerInfoOuter {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30px;
+  max-width: 1200px;
+  margin: 20px auto;
+  @include desktop {
+    flex-direction: column;
+    padding: 0 20px;
+  }
+  .bookingDataContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    position: sticky;
+    top: 80px;
+    left: 0;
+    flex-basis: 30%;
+    height: 100%;
+    border: solid lightgray 1px;
+    border-radius: 5px;
+    margin-top: 145px;
+    font-size: 18px;
+    padding: 10px 15px;
+    @include desktop {
+      position: relative;
+      top: 0;
+    }
+    @include custom640 {
+      margin-top: 50px;
+    }
+    div {
+      display: flex;
+      align-items: center;
+      svg {
+        width: 20px;
+        height: 20px;
+        margin-right: 15px;
+        circle,
+        path,
+        rect {
+          stroke: "black";
+        }
+      }
+    }
+  }
+  .customerFormContainer {
+    flex-basis: 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+    @include desktop {
+      padding: 30px 0 0;
+    }
+    .title {
+      text-align: center;
+      font-size: 30px;
+      font-weight: bold;
+      padding: 35px 0;
+      @include desktop {
+        position: absolute;
+        top: 100px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+      }
+      @include custom640 {
+        font-size: 20px;
+        top: 85px;
+        padding: 0;
+      }
+    }
+    .innerFormContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      border: solid lightgray 1px;
+      border-radius: 5px;
+      padding: 30px;
+      @include desktop {
+        gap: 20px;
+        padding: 15px;
+      }
+      .nameGenderOuter {
+        max-width: 520px;
+        @include desktop {
+          max-width: none;
+        }
+        .labelName {
+          &::after {
+            content: "*";
+            color: rgb(255, 133, 14);
+            font-weight: bold;
+            margin-left: 5px;
+          }
+        }
+        .nameGenderContainer {
+          display: flex;
+          @include desktop {
+            flex-direction: column;
+            align-items: baseline;
+          }
+          .nameInput {
+            flex-basis: 45%;
+            padding: 7px 12px;
+            margin: 5px 0 0 0;
+            border: solid lightgray 1px;
+            border-radius: 5px;
+            @include desktop {
+              width: 100%;
+            }
+          }
+          .genderRadio {
+            flex: 1;
+            display: flex;
+            flex-wrap: nowrap;
+            padding: 5px;
+            margin: 5px 0 0 0;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+            @include desktop {
+              width: auto;
+              flex-wrap: wrap;
+              align-items: baseline;
+              white-space: nowrap;
+              text-align: start;
+              padding: 0;
+            }
+            label {
+              flex: 1;
+              @include desktop {
+                padding-right: 20px;
+              }
+              span {
+                margin-left: 7px;
+              }
+            }
+          }
+        }
+        .nameValidationContainer {
+          display: flex;
+          align-items: center;
+          margin-top: 10px;
+          border-radius: 5px;
+          padding: 5px 10px;
+          background: rgb(70, 70, 70);
+          color: white;
+          font-size: 14px;
+          svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            display: block;
+          }
+        }
+      }
+      .phoneNumberContainer,
+      .emailContainer {
+        display: flex;
+        flex-direction: column;
+        max-width: 520px;
+        @include desktop {
+          max-width: none;
+        }
+        .checkboxContainer {
+          margin-top: 10px;
+          input {
+            margin-right: 10px;
+          }
+          .note {
+            margin-top: 10px;
+            font-size: 12px;
+          }
+        }
+        input {
+          padding: 7px 12px;
+          margin: 5px 0 0 0;
+          border-radius: 5px;
+          border: solid lightgray 1px;
+        }
+        .labelPhoneNumber {
+          &::after {
+            content: "*";
+            color: rgb(255, 133, 14);
+            font-weight: bold;
+            margin-left: 5px;
+          }
+        }
+        .phoneValidationContainer {
+          display: flex;
+          align-items: center;
+          margin-top: 10px;
+          border-radius: 5px;
+          padding: 5px 10px;
+          background: rgb(70, 70, 70);
+          color: white;
+          font-size: 14px;
+          svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            display: block;
+          }
+        }
+      }
+      .purposeContainer {
+        display: flex;
+        flex-direction: column;
+        max-width: 520px;
+        @include desktop {
+          max-width: none;
+        }
+        input {
+          height: 0;
+        }
+        .purposeSelection {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          margin: 5px 0 0 0;
+          div {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-basis: 49%;
+            border: solid lightgray 1px;
+            border-radius: 5px;
+            margin: 0 0 10px;
+            padding: 2px 10px;
+            font-size: 14px;
+            color: rgb(77, 77, 77);
+            span {
+              font-size: 14px;
+              line-height: 30px;
+              font-weight: 400;
+              text-align: left;
+            }
+          }
+        }
+      }
+      .otherContainer {
+        display: flex;
+        flex-direction: column;
+        max-width: 520px;
+        @include desktop {
+          max-width: none;
+        }
+        .textareaContainer {
+          margin: 5px 0 0 0;
+          textarea {
+            width: 100%;
+            border: solid lightgray 1px;
+            border-radius: 5px;
+            padding: 8px;
+          }
+        }
+        .countLength {
+          text-align: right;
+          color: gray;
+          font-size: 12px;
+        }
+      }
+    }
+    .formLastSection {
+      display: flex;
+      flex-direction: column;
+      margin: 20px 0 0 0;
+      div {
+        margin: 0 0 10px 0;
+      }
+      div:nth-child(1) {
+        font-size: 14px;
+        width: 85%;
+      }
+      div:nth-child(2) {
+        background-color: rgb(255, 133, 14);
+        text-align: center;
+        padding: 15px;
+        border-radius: 5px;
+        color: white;
+        font-size: 18px;
+      }
+      div:nth-child(3) {
+        text-align: center;
+        padding: 15px;
+        border-radius: 5px;
+        border: solid gray 1px;
+        font-size: 18px;
+      }
+      .formConfirmBtn,
+      .formReturnBtn {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+//SuccessPage
+
+.successPageOuter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100vh;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  .successPageInner {
+    background: whitesmoke;
+    padding: 10px 0;
+    border-radius: 5px;
+    width: 380px;
+    @include custom640 {
+      width: 265px;
+    }
+    .successAlert {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 10px;
+      background: rgb(200, 243, 219);
+      border-radius: 5px;
+      color: rgb(69, 173, 116);
+      font-weight: bold;
+      padding: 10px 50px;
+      .alertContent {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        .checkSvg {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-wrap: nowrap;
+          white-space: nowrap;
+          position: relative;
+          width: 20px;
+          height: 20px;
+          border-radius: 10px;
+          background: rgb(80, 189, 129);
+          svg {
+            transform: scale(0.8);
+          }
+        }
+      }
+    }
+    .storeInfoContainer {
+      text-align: center;
+      margin-bottom: 5px;
+      div:nth-child(1) {
+        font-size: 18px;
+        font-weight: bold;
+      }
+    }
+    .appointmentContainer {
+      text-align: center;
+      background: white;
+      margin: 0 10px;
+      padding: 15px 0;
+      border-radius: 5px;
+      .appointmentData {
+        border: solid lightgray 1px;
+        padding: 15px 0;
+        margin: 15px 18px 0;
+        font-size: 20px;
+        font-weight: bold;
+        div:nth-child(2) {
+          color: rgb(255, 133, 14);
+          font-weight: bold;
+          font-size: 50px;
+        }
+      }
+    }
+  }
+}
