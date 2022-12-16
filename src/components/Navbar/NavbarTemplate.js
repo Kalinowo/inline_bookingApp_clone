@@ -3,7 +3,10 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Link, Outlet } from "react-router-dom";
 
-const navigation = [{ name: "Home", href: "/", current: true }];
+const navigation = [
+  { name: "Home", href: "/", current: true },
+  { name: "About the site", href: "/about", current: true },
+];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");

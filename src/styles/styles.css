@@ -746,4 +746,23 @@
   color: rgb(255, 133, 14);
   font-weight: bold;
   font-size: 50px;
+}
+
+.aboutOuter {
+  min-height: 100vh;
+  width: 100%;
+}
+.aboutOuter .aboutContainer {
+  margin-inline: auto;
+  border: solid lightgray 1px;
+  margin-top: 10px;
+  padding: 30px;
+  max-width: 1200px;
+}
+.aboutOuter .aboutContainer div {
+  margin: 10px;
+  font-size: 18px;
+}
+.aboutOuter .aboutContainer div:nth-child(3) {
+  margin-top: 30px;
 }/*# sourceMappingURL=styles.css.map */
