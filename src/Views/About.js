@@ -15,7 +15,8 @@ export default function About() {
             </a>
           </div>
           <div>
-            此網站為樂排的預約介面克隆，為個人練習及面試使用，如有不妥請聯絡我，我將立即移除。
+            此網站為樂排的預約介面克隆，為個人練習及面試使用，如有不妥請聯絡我，我
+            將立即移除。
           </div>
           <div>
             This site is a clone of inline booking UI for personal practicing
