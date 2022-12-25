@@ -754,6 +754,7 @@
 }
 .aboutOuter .aboutContainer {
   margin-inline: auto;
+  height: auto;
   border: solid lightgray 1px;
   margin-top: 10px;
   padding: 30px;
@@ -762,6 +763,7 @@
 .aboutOuter .aboutContainer div {
   margin: 10px;
   font-size: 18px;
+  word-wrap: break-word;
 }
 .aboutOuter .aboutContainer div:nth-child(1) {
   margin-bottom: 30px;
