@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function CustomSpan({ children }) {
+export default function CustomSpan({ children, onClick }) {
   const [active, setActive] = React.useState(true);
 
   React.useEffect(() => {
@@ -10,7 +10,10 @@ export default function CustomSpan({ children }) {
   }, [children]);
 
   return (
-    <span style={active ? { border: "solid orange 2px" } : null}>
+    <span
+      style={active ? { border: "solid orange 2px" } : null}
+      onClick={onClick}
+    >
       {children}
     </span>
   );

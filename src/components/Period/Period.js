@@ -14,8 +14,21 @@ const dinnerPeriod = [
   "20:30",
 ];
 
-export default function Period(props) {
+function Period(props, ref) {
   const [selectedTime, setSelectedTime] = React.useState(null);
+
+  const periodRef = React.useRef();
+
+  React.useImperativeHandle(
+    ref,
+    () => {
+      return {
+        toPeriod: () =>
+          periodRef.current?.scrollIntoView({ behavior: "smooth" }),
+      };
+    },
+    []
+  );
 
   React.useEffect(() => {
     if (selectedTime) {
@@ -25,8 +38,8 @@ export default function Period(props) {
 
   return (
     <>
-      <div className="secondColumn">
-        <div>時段</div>
+      <div ref={ref} className="secondColumn">
+        <div ref={periodRef}>時段</div>
         <div>
           <TimeTemplate
             arr={lunchPeriod}
@@ -49,3 +62,5 @@ export default function Period(props) {
     </>
   );
 }
+
+export default React.forwardRef(Period);

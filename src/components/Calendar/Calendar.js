@@ -2,7 +2,7 @@ import React from "react";
 import SelectNumberofPeople from "./sections/SelectNumberofPeople";
 import SelectDate from "./sections/SelectDate";
 
-export default function Calendar(props) {
+function Calendar(props, ref) {
   let { people, setPeople, selectedDate, setSelectedDate } = props;
   const [openCalendar, setOpenCalendar] = React.useState(false);
 
@@ -10,6 +10,7 @@ export default function Calendar(props) {
     <div className="firstColumn">
       <SelectNumberofPeople
         {...props}
+        ref={ref}
         openCalendar={openCalendar}
         setOpenCalendar={setOpenCalendar}
       />
@@ -17,3 +18,5 @@ export default function Calendar(props) {
     </div>
   );
 }
+
+export default React.forwardRef(Calendar);

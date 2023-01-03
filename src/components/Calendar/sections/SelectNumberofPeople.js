@@ -1,9 +1,22 @@
 import React from "react";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 
-export default function SelectNumberofPeople(props) {
+function SelectNumberofPeople(props, ref) {
   let { people, setPeople, selectedDate, openCalendar, setOpenCalendar } =
     props;
+  const numberRef = React.useRef();
+  const dateRef = React.useRef();
+  React.useImperativeHandle(
+    ref,
+    () => {
+      return {
+        toNumber: () =>
+          numberRef.current?.scrollIntoView({ behavior: "smooth" }),
+        toDate: () => dateRef.current?.scrollIntoView({ behavior: "smooth" }),
+      };
+    },
+    []
+  );
 
   let today = new Date().toLocaleString("zh-TW", {
     month: "long",
@@ -19,9 +32,11 @@ export default function SelectNumberofPeople(props) {
 
   return (
     <>
-      <div className="title">Booking App</div>
+      <div ref={ref} className="title">
+        Booking App
+      </div>
       <div className="optionContainer">
-        <div className="numberOfPeople">
+        <div ref={numberRef} className="numberOfPeople">
           <div>人數</div>
           <div>
             <select
@@ -34,7 +49,7 @@ export default function SelectNumberofPeople(props) {
             </select>
           </div>
         </div>
-        <div className="date">
+        <div ref={dateRef} className="date">
           <div>日期</div>
           <div
             className="dateSelect"
@@ -53,3 +68,5 @@ export default function SelectNumberofPeople(props) {
     </>
   );
 }
+
+export default React.forwardRef(SelectNumberofPeople);

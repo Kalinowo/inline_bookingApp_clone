@@ -22,6 +22,8 @@ export default function BookingHome() {
   const [period, setPeriod] = React.useState("");
 
   const navigate = useNavigate();
+  const scrollRef = React.useRef();
+  const scrollRef2 = React.useRef();
 
   const toCustomerInfoPage = () => {
     if (period.length !== 0) {
@@ -43,18 +45,20 @@ export default function BookingHome() {
         <React.Fragment>
           <div className="bookingHomeOuter">
             <Calendar
+              ref={scrollRef}
               people={people}
               setPeople={setPeople}
               selectedDate={selectedDate}
               setSelectedDate={setSelectedDate}
             />
-            <Period period={period} setPeriod={setPeriod} />
+            <Period ref={scrollRef2} period={period} setPeriod={setPeriod} />
             <div className="footer">
               <div className="confirmContainer">
                 <div className="confirmList">
                   <div>您已選擇預訂：</div>
                   <CustomSpan
                     children={people ? people : defaultValues.people}
+                    onClick={() => scrollRef.current.toNumber()}
                   />
                   <FaChevronRight />
                   <CustomSpan
@@ -63,10 +67,12 @@ export default function BookingHome() {
                         ? selectedDate.split(" ")[0]
                         : defaultValues.selectedDate.split(" ")[0]
                     }
+                    onClick={() => scrollRef.current.toDate()}
                   />
                   <FaChevronRight />
                   <CustomSpan
                     children={period ? period : defaultValues.period}
+                    onClick={() => scrollRef2.current.toPeriod()}
                   />
                 </div>
               </div>
