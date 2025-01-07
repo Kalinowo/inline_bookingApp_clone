@@ -1,0 +1,779 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+.bookingHomeOuter {
+  min-height: 100vh;
+  width: 100%;
+}
+
+.firstColumn {
+  position: relative;
+  top: 0;
+  padding: 0 30px 30px;
+  max-width: 1200px;
+  border-bottom: solid gray 1px;
+  margin: 0 auto;
+}
+@media (max-width: 640px) {
+  .firstColumn {
+    padding: 0 20px 30px;
+  }
+}
+.firstColumn .title {
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+  padding-left: 30px;
+  padding-right: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.firstColumn .optionContainer {
+  display: flex;
+  width: 100%;
+  padding: 20px 30px;
+  max-width: 1200px;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+@media (max-width: 640px) {
+  .firstColumn .optionContainer {
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px 20px;
+  }
+}
+.firstColumn .optionContainer .numberOfPeople {
+  flex-basis: 48%;
+}
+.firstColumn .optionContainer .numberOfPeople div:nth-child(1) {
+  font-size: 20px;
+}
+.firstColumn .optionContainer .numberOfPeople select {
+  width: 100%;
+  height: 30px;
+  border: solid gray 1px;
+  border-radius: 5px;
+  outline: none;
+  padding-left: 10px;
+}
+.firstColumn .optionContainer .date {
+  flex-basis: 48%;
+}
+.firstColumn .optionContainer .date div:nth-child(1) {
+  font-size: 20px;
+}
+.firstColumn .optionContainer .date .dateSelect {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  border: solid gray 1px;
+  border-radius: 5px;
+  line-height: 30px;
+  padding-left: 10px;
+}
+.firstColumn .optionContainer .date .downIcon,
+.firstColumn .optionContainer .date .upIcon {
+  position: absolute;
+  top: 6px;
+  right: 5px;
+  font-size: 15px;
+}
+.firstColumn .calendarOuter {
+  position: relative;
+  top: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  height: auto;
+  padding: 0 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+@media (max-width: 640px) {
+  .firstColumn .calendarOuter {
+    padding: 0;
+  }
+}
+.firstColumn .calendarOuter .leftIcon {
+  position: absolute;
+  top: 5px;
+  left: 0;
+  color: gray;
+  margin-left: 30px;
+  font-size: 25px;
+  cursor: pointer;
+}
+@media (max-width: 640px) {
+  .firstColumn .calendarOuter .leftIcon {
+    margin: 0;
+  }
+}
+.firstColumn .calendarOuter .rightIcon {
+  position: absolute;
+  top: 5px;
+  right: 0px;
+  color: gray;
+  margin-right: 30px;
+  font-size: 25px;
+  cursor: pointer;
+}
+@media (max-width: 640px) {
+  .firstColumn .calendarOuter .rightIcon {
+    margin: 0;
+  }
+}
+.firstColumn .calendarOuter .calendarContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 48%;
+}
+@media (max-width: 640px) {
+  .firstColumn .calendarOuter .calendarContainer {
+    flex-basis: 100%;
+  }
+}
+@media (max-width: 640px) {
+  .firstColumn .calendarOuter .calendarContainer.second {
+    display: none;
+  }
+}
+.firstColumn .calendarOuter .calendarContainer .yearMonthContainer {
+  width: 80%;
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+}
+.firstColumn .calendarOuter .calendarContainer .weekContainer {
+  display: flex;
+  width: 100%;
+  font-size: 20px;
+}
+.firstColumn .calendarOuter .calendarContainer .weekContainer span {
+  flex-basis: 14.2857142857%;
+  text-align: center;
+}
+.firstColumn .calendarOuter .calendarContainer .dateContainer {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 0;
+}
+.firstColumn .calendarOuter .calendarContainer .dateContainer .placeholder {
+  width: 14.2857142857%;
+  height: 0;
+  padding-bottom: 14.2857142857%;
+}
+.firstColumn .calendarOuter .calendarContainer .dateContainer .date {
+  position: relative;
+  width: 14.2857142857%;
+  height: 0;
+  padding-bottom: 14.2857142857%;
+  transform: scale(0.9);
+  border: solid gray 1px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.firstColumn .calendarOuter .calendarContainer .dateContainer .date.active {
+  border: none;
+  background: rgb(255, 133, 14);
+  color: white;
+}
+.firstColumn .calendarOuter .calendarContainer .dateContainer .date .dateText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.secondColumn {
+  position: relative;
+  top: 0;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 30px;
+  max-width: 1200px;
+  border-bottom: solid gray 1px;
+  margin: 20px auto 80px;
+}
+.secondColumn div:nth-child(1) {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.secondColumn .periodContainer {
+  position: relative;
+  top: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: baseline;
+  gap: 12px;
+  border-top: solid lightgray 1px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.secondColumn .periodContainer::before {
+  content: attr(data-name);
+  position: absolute;
+  top: -11px;
+  left: 0;
+  width: 38px;
+  height: 20px;
+  color: gray;
+  background: white;
+  font-size: 15px;
+}
+.secondColumn .periodContainer span {
+  border: solid lightgray 1px;
+  border-radius: 5px;
+  flex-basis: calc(16.6666666667% - 10px);
+  padding: 10px 0;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+@media (max-width: 640px) {
+  .secondColumn .periodContainer span {
+    flex-basis: calc(33.3333333333% - 10px);
+  }
+}
+.secondColumn .periodContainer span.active {
+  border: none;
+  background: rgb(255, 133, 14);
+  color: white;
+}
+.secondColumn .note {
+  text-align: center;
+  margin-top: 15px;
+}
+.secondColumn .note .first,
+.secondColumn .note .second {
+  font-size: 15px;
+  line-height: 1px;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  background: white;
+  box-shadow: 0px 10px 20px 1px gray;
+}
+.footer .confirmContainer {
+  display: flex;
+  justify-content: center;
+  border-bottom: solid lightgray 1px;
+}
+.footer .confirmContainer .confirmList {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  height: 50px;
+  background: white;
+  line-height: 50px;
+}
+@media (max-width: 640px) {
+  .footer .confirmContainer .confirmList {
+    justify-content: center;
+    white-space: nowrap;
+    width: 100%;
+  }
+}
+@media (max-width: 640px) {
+  .footer .confirmContainer .confirmList div {
+    display: none;
+  }
+}
+.footer .confirmContainer .confirmList span {
+  background: rgb(236, 236, 236);
+  line-height: 18px;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 0 10px;
+  border: solid lightgray 2px;
+}
+.footer .btnContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+}
+.footer .btnContainer .btn {
+  width: 80%;
+  font-size: 18px;
+  color: white;
+  background: rgb(255, 133, 14);
+  text-align: center;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.customerInfoOuter {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30px;
+  max-width: 1200px;
+  margin: 20px auto;
+}
+@media (max-width: 1024px) {
+  .customerInfoOuter {
+    flex-direction: column;
+    padding: 0 20px;
+  }
+}
+.customerInfoOuter .bookingDataContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 80px;
+  left: 0;
+  flex-basis: 30%;
+  height: 100%;
+  border: solid lightgray 1px;
+  border-radius: 5px;
+  margin-top: 145px;
+  font-size: 18px;
+  padding: 10px 15px;
+}
+@media (max-width: 1024px) {
+  .customerInfoOuter .bookingDataContainer {
+    position: relative;
+    top: 0;
+  }
+}
+@media (max-width: 640px) {
+  .customerInfoOuter .bookingDataContainer {
+    margin-top: 50px;
+  }
+}
+.customerInfoOuter .bookingDataContainer div {
+  display: flex;
+  align-items: center;
+}
+.customerInfoOuter .bookingDataContainer div svg {
+  width: 20px;
+  height: 20px;
+  margin-right: 15px;
+}
+.customerInfoOuter .bookingDataContainer div svg circle,
+.customerInfoOuter .bookingDataContainer div svg path,
+.customerInfoOuter .bookingDataContainer div svg rect {
+  stroke: "black";
+}
+.customerInfoOuter .customerFormContainer {
+  flex-basis: 65%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 30px;
+}
+@media (max-width: 1024px) {
+  .customerInfoOuter .customerFormContainer {
+    padding: 30px 0 0;
+  }
+}
+.customerInfoOuter .customerFormContainer .title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  padding: 35px 0;
+}
+@media (max-width: 1024px) {
+  .customerInfoOuter .customerFormContainer .title {
+    position: absolute;
+    top: 100px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+  }
+}
+@media (max-width: 640px) {
+  .customerInfoOuter .customerFormContainer .title {
+    font-size: 20px;
+    top: 85px;
+    padding: 0;
+  }
+}
+.customerInfoOuter .customerFormContainer .innerFormContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  border: solid lightgray 1px;
+  border-radius: 5px;
+  padding: 30px;
+}
+@media (max-width: 1024px) {
+  .customerInfoOuter .customerFormContainer .innerFormContainer {
+    gap: 20px;
+    padding: 15px;
+  }
+}
+.customerInfoOuter .customerFormContainer .innerFormContainer .nameGenderOuter {
+  max-width: 520px;
+}
+@media (max-width: 1024px) {
+  .customerInfoOuter .customerFormContainer .innerFormContainer .nameGenderOuter {
+    max-width: none;
+  }
+}
+.customerInfoOuter .customerFormContainer .innerFormContainer .nameGenderOuter .labelName::after {
+  content: "*";
+  color: rgb(255, 133, 14);
+  font-weight: bold;
+  margin-left: 5px;
+}
+.customerInfoOuter .customerFormContainer .innerFormContainer .nameGenderOuter .nameGenderContainer {
+  display: flex;
+}
+@media (max-width: 1024px) {
+  .customerInfoOuter .customerFormContainer .innerFormContainer .nameGenderOuter .nameGenderContainer {
+    flex-direction: column;
+    align-items: baseline;
+  }
+}
+.customerInfoOuter .customerFormContainer .innerFormContainer .nameGenderOuter .nameGenderContainer .nameInput {
+  flex-basis: 45%;
+  padding: 7px 12px;
+  margin: 5px 0 0 0;
+  border: solid lightgray 1px;
+  border-radius: 5px;
+}
+@media (max-width: 1024px) {
+  .customerInfoOuter .customerFormContainer .innerFormContainer .nameGenderOuter .nameGenderContainer .nameInput {
+    width: 100%;
+  }
+}
+.customerInfoOuter .customerFormContainer .innerFormContainer .nameGenderOuter .nameGenderContainer .genderRadio {
+  flex: 1;
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 5px;
+  margin: 5px 0 0 0;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+@media (max-width: 1024px) {
+  .customerInfoOuter .customerFormContainer .innerFormContainer .nameGenderOuter .nameGenderContainer .genderRadio {
+    width: auto;
+    flex-wrap: wrap;
+    align-items: baseline;
+    white-space: nowrap;
+    text-align: start;
+    padding: 0;
+  }
+}
+.customerInfoOuter .customerFormContainer .innerFormContainer .nameGenderOuter .nameGenderContainer .genderRadio label {
+  flex: 1;
+}
+@media (max-width: 1024px) {
+  .customerInfoOuter .customerFormContainer .innerFormContainer .nameGenderOuter .nameGenderContainer .genderRadio label {
+    padding-right: 20px;
+  }
+}
+.customerInfoOuter .customerFormContainer .innerFormContainer .nameGenderOuter .nameGenderContainer .genderRadio label span {
+  margin-left: 7px;
+}
+.customerInfoOuter .customerFormContainer .innerFormContainer .nameGenderOuter .nameValidationContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  background: rgb(70, 70, 70);
+  color: white;
+  font-size: 14px;
+}
+.customerInfoOuter .customerFormContainer .innerFormContainer .nameGenderOuter .nameValidationContainer svg {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  display: block;
+}
+.customerInfoOuter .customerFormContainer .innerFormContainer .phoneNumberContainer,
+.customerInfoOuter .customerFormContainer .innerFormContainer .emailContainer {
+  display: flex;
+  flex-direction: column;
+  max-width: 520px;
+}
+@media (max-width: 1024px) {
+  .customerInfoOuter .customerFormContainer .innerFormContainer .phoneNumberContainer,
+.customerInfoOuter .customerFormContainer .innerFormContainer .emailContainer {
+    max-width: none;
+  }
+}
+.customerInfoOuter .customerFormContainer .innerFormContainer .phoneNumberContainer .checkboxContainer,
+.customerInfoOuter .customerFormContainer .innerFormContainer .emailContainer .checkboxContainer {
+  margin-top: 10px;
+}
+.customerInfoOuter .customerFormContainer .innerFormContainer .phoneNumberContainer .checkboxContainer input,
+.customerInfoOuter .customerFormContainer .innerFormContainer .emailContainer .checkboxContainer input {
+  margin-right: 10px;
+}
+.customerInfoOuter .customerFormContainer .innerFormContainer .phoneNumberContainer .checkboxContainer .note,
+.customerInfoOuter .customerFormContainer .innerFormContainer .emailContainer .checkboxContainer .note {
+  margin-top: 10px;
+  font-size: 12px;
+}
+.customerInfoOuter .customerFormContainer .innerFormContainer .phoneNumberContainer input,
+.customerInfoOuter .customerFormContainer .innerFormContainer .emailContainer input {
+  padding: 7px 12px;
+  margin: 5px 0 0 0;
+  border-radius: 5px;
+  border: solid lightgray 1px;
+}
+.customerInfoOuter .customerFormContainer .innerFormContainer .phoneNumberContainer .labelPhoneNumber::after,
+.customerInfoOuter .customerFormContainer .innerFormContainer .emailContainer .labelPhoneNumber::after {
+  content: "*";
+  color: rgb(255, 133, 14);
+  font-weight: bold;
+  margin-left: 5px;
+}
+.customerInfoOuter .customerFormContainer .innerFormContainer .phoneNumberContainer .phoneValidationContainer,
+.customerInfoOuter .customerFormContainer .innerFormContainer .emailContainer .phoneValidationContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  background: rgb(70, 70, 70);
+  color: white;
+  font-size: 14px;
+}
+.customerInfoOuter .customerFormContainer .innerFormContainer .phoneNumberContainer .phoneValidationContainer svg,
+.customerInfoOuter .customerFormContainer .innerFormContainer .emailContainer .phoneValidationContainer svg {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  display: block;
+}
+.customerInfoOuter .customerFormContainer .innerFormContainer .purposeContainer {
+  display: flex;
+  flex-direction: column;
+  max-width: 520px;
+}
+@media (max-width: 1024px) {
+  .customerInfoOuter .customerFormContainer .innerFormContainer .purposeContainer {
+    max-width: none;
+  }
+}
+.customerInfoOuter .customerFormContainer .innerFormContainer .purposeContainer input {
+  height: 0;
+}
+.customerInfoOuter .customerFormContainer .innerFormContainer .purposeContainer .purposeSelection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 5px 0 0 0;
+}
+.customerInfoOuter .customerFormContainer .innerFormContainer .purposeContainer .purposeSelection div {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-basis: 49%;
+  border: solid lightgray 1px;
+  border-radius: 5px;
+  margin: 0 0 10px;
+  padding: 2px 10px;
+  font-size: 14px;
+  color: rgb(77, 77, 77);
+}
+.customerInfoOuter .customerFormContainer .innerFormContainer .purposeContainer .purposeSelection div span {
+  font-size: 14px;
+  line-height: 30px;
+  font-weight: 400;
+  text-align: left;
+}
+.customerInfoOuter .customerFormContainer .innerFormContainer .otherContainer {
+  display: flex;
+  flex-direction: column;
+  max-width: 520px;
+}
+@media (max-width: 1024px) {
+  .customerInfoOuter .customerFormContainer .innerFormContainer .otherContainer {
+    max-width: none;
+  }
+}
+.customerInfoOuter .customerFormContainer .innerFormContainer .otherContainer .textareaContainer {
+  margin: 5px 0 0 0;
+}
+.customerInfoOuter .customerFormContainer .innerFormContainer .otherContainer .textareaContainer textarea {
+  width: 100%;
+  border: solid lightgray 1px;
+  border-radius: 5px;
+  padding: 8px;
+}
+.customerInfoOuter .customerFormContainer .innerFormContainer .otherContainer .countLength {
+  text-align: right;
+  color: gray;
+  font-size: 12px;
+}
+.customerInfoOuter .customerFormContainer .formLastSection {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0 0 0;
+}
+.customerInfoOuter .customerFormContainer .formLastSection div {
+  margin: 0 0 10px 0;
+}
+.customerInfoOuter .customerFormContainer .formLastSection div:nth-child(1) {
+  font-size: 14px;
+  width: 85%;
+}
+.customerInfoOuter .customerFormContainer .formLastSection div:nth-child(2) {
+  background-color: rgb(255, 133, 14);
+  text-align: center;
+  padding: 15px;
+  border-radius: 5px;
+  color: white;
+  font-size: 18px;
+}
+.customerInfoOuter .customerFormContainer .formLastSection div:nth-child(3) {
+  text-align: center;
+  padding: 15px;
+  border-radius: 5px;
+  border: solid gray 1px;
+  font-size: 18px;
+}
+.customerInfoOuter .customerFormContainer .formLastSection .formConfirmBtn,
+.customerInfoOuter .customerFormContainer .formLastSection .formReturnBtn {
+  cursor: pointer;
+}
+
+.successPageOuter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100vh;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.successPageOuter .successPageInner {
+  background: whitesmoke;
+  padding: 10px 0;
+  border-radius: 5px;
+  width: 380px;
+}
+@media (max-width: 640px) {
+  .successPageOuter .successPageInner {
+    width: 265px;
+  }
+}
+.successPageOuter .successPageInner .successAlert {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 10px;
+  background: rgb(200, 243, 219);
+  border-radius: 5px;
+  color: rgb(69, 173, 116);
+  font-weight: bold;
+  padding: 10px 50px;
+}
+.successPageOuter .successPageInner .successAlert .alertContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.successPageOuter .successPageInner .successAlert .alertContent .checkSvg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background: rgb(80, 189, 129);
+}
+.successPageOuter .successPageInner .successAlert .alertContent .checkSvg svg {
+  transform: scale(0.8);
+}
+.successPageOuter .successPageInner .storeInfoContainer {
+  text-align: center;
+  margin-bottom: 5px;
+}
+.successPageOuter .successPageInner .storeInfoContainer div:nth-child(1) {
+  font-size: 18px;
+  font-weight: bold;
+}
+.successPageOuter .successPageInner .appointmentContainer {
+  text-align: center;
+  background: white;
+  margin: 0 10px;
+  padding: 15px 0;
+  border-radius: 5px;
+}
+.successPageOuter .successPageInner .appointmentContainer .appointmentData {
+  border: solid lightgray 1px;
+  padding: 15px 0;
+  margin: 15px 18px 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+.successPageOuter .successPageInner .appointmentContainer .appointmentData div:nth-child(2) {
+  color: rgb(255, 133, 14);
+  font-weight: bold;
+  font-size: 50px;
+}
+
+.aboutOuter {
+  min-height: 100vh;
+  width: 100%;
+}
+.aboutOuter .aboutContainer {
+  margin-inline: auto;
+  height: auto;
+  border: solid lightgray 1px;
+  margin-top: 10px;
+  padding: 30px;
+  max-width: 1200px;
+}
+.aboutOuter .aboutContainer div {
+  margin: 10px;
+  font-size: 18px;
+  word-wrap: break-word;
+}
+.aboutOuter .aboutContainer div:nth-child(1) {
+  margin-bottom: 30px;
+}
+.aboutOuter .aboutContainer div:nth-child(1) a {
+  color: blue;
+}
+.aboutOuter .aboutContainer div:nth-child(1) a:hover {
+  text-decoration: underline;
+}
+.aboutOuter .aboutContainer div:nth-child(4) {
+  margin-top: 30px;
+}/*# sourceMappingURL=styles.css.map */
